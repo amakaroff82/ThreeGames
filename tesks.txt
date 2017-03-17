@@ -1,0 +1,5 @@
+1 Scene with plane, resizing screen		- done
+2 Camera with 1-face perspective, moving	- done
+3 Objects with colisions, destroing objects 	- 
+4 Ligting + materials + shadow                  -
+5 Dinamic ground				
