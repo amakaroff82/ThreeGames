@@ -21,16 +21,16 @@
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
 		
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+	renderer.shadowMap.enabled = true;
+	renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 	
-	var geometry = new THREE.PlaneGeometry( 100,100 );
+	var geometry = new THREE.PlaneGeometry( 1000, 1000 );
 	var texture = THREE.ImageUtils.loadTexture( 'ground.jpg' );
 	texture.wrapS = THREE.RepeatWrapping;
 	texture.wrapT = THREE.RepeatWrapping;
 	texture.repeat.set( 32, 32 );
 
-	var material = new THREE.MeshPhongMaterial(  {  /*map : texture,*/ color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading} );
+	var material = new THREE.MeshPhongMaterial(  {  map : texture, color: 0xdddddd, specular: 0x999999, shininess: 15, shading: THREE.FlatShading} );
 	
 	var groundMesh = new THREE.Mesh( geometry, material );
 	groundMesh.receiveShadow = true;
@@ -55,13 +55,13 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
 	*/
 		var dirLight = new THREE.DirectionalLight(0xffffff, 1);
 		dirLight.position.set(0, 50, 50);
-	dirLight.castShadow = true;
-dirLight.shadow.mapSize.width = 1024;  // default 512
-dirLight.shadow.mapSize.height = 1024; // default 512
-dirLight.shadow.camera.near = 2;       // default 0.5
-dirLight.shadow.camera.far = 500;      // default 500
+		dirLight.castShadow = true;
+		dirLight.shadow.mapSize.width = 1024;  // default 512
+		dirLight.shadow.mapSize.height = 1024; // default 512
+		dirLight.shadow.camera.near = 2;       // default 0.5
+		dirLight.shadow.camera.far = 500;      // default 500
 
-dirLight.shadow.camera.left = 500;      // default 500
+		dirLight.shadow.camera.left = 500;      // default 500
 
 
 
@@ -160,22 +160,23 @@ dirLight.shadow.camera.left = 500;      // default 500
 		
 	}
 
-	function generateBox(){
-		var box = new THREE.TorusGeometry( 5, 1.5, 0.1, 200);
-
-		var boxMaterial = new THREE.MeshPhysicalMaterial(  { color: new THREE.Color(Math.random(), Math.random(), Math.random()) } );
 		
+	function generateBox(){
+		var box = new THREE.TorusGeometry( 5, 1.5, 0.1, 30);
+
+			var boxMaterial = new THREE.MeshPhysicalMaterial(  { color: new THREE.Color(Math.random(), Math.random(), Math.random()) } );
+
 		var boxMesh = new THREE.Mesh( box, boxMaterial );
 		
 		boxMesh.position.y = Math.random() * 2 - 0.5;
-		boxMesh.position.x = Math.random() * 100 - 50;
-		boxMesh.position.z = Math.random() * 100 - 50;
+		boxMesh.position.x = Math.random() * 1000 - 500;
+		boxMesh.position.z = Math.random() * 1000 - 500;
 		
 		boxMesh.rotation.x = Math.random() * Math.PI * 2;
 		boxMesh.rotation.y = Math.random() * Math.PI * 2;
 		boxMesh.rotation.z = Math.random() * Math.PI * 2;	
-//	groundMesh.receiveShadows = true;
-	boxMesh.castShadow = true;
+	//	groundMesh.receiveShadows = true;
+		//boxMesh.castShadow = true;
 
 
 
@@ -185,7 +186,7 @@ dirLight.shadow.camera.left = 500;      // default 500
 	}
 
 	
-	for(var i = 0; i < 100; i ++ ){
+	for(var i = 0; i < 3000; i ++ ){
 		generateBox();
 	}
 	
